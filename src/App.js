@@ -42,7 +42,7 @@ function App() {
       </div>
     </main>
     <footer className='footer'>
-      All right reserved
+      All rights reserved
     </footer>
   </div>
     </BrowserRouter>
