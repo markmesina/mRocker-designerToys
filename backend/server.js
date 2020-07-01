@@ -9,6 +9,3 @@ app.get('/api/products', (req, res) => {
 app.listen(PORT, () => {
     console.log(`server running on PORT: ${PORT}`)
 })
-
-
-// "nodemon --watch backend --exec babel-node backend/server.js"
