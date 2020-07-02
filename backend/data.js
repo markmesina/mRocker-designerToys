@@ -5,10 +5,11 @@ export default  {
       name: 'Tupac Mighty Miggs',
       category: 'mRocker Originals',
       image: '/images/tupac.jpg',
-      price: 60,
+      price: 20,
       brand: 'mRocker Designer Toys',
       rating: 4.5,
-      numReviews: 10
+      numReviews: 5,
+      countInStock: 6,
     },
     {
       _id:'2',
@@ -18,7 +19,8 @@ export default  {
       price: 60,
       brand: 'mRocker Designer Toys',
       rating: 4.5,
-      numReviews: 10
+      numReviews: 10,
+      countInStock: 3,
     },
     {
       _id:'3',
@@ -28,7 +30,8 @@ export default  {
       price: 80,
       brand: 'mRocker Designer Toys',
       rating: 10,
-      numReviews: 10
+      numReviews: 10,
+      countInStock: 14,
     }
   ]
 }
