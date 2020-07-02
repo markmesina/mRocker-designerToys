@@ -58,7 +58,9 @@ function ProductScreen(props) {
                   Price: ${product.price}
                 </li>
                 <li>
-                  Status: {product.status}
+                  Status: {product.countInStock > 0 ?
+                  "In Stock" : "Unavailable"
+                }
                 </li>
                 <li>
                   Qty: <select
@@ -71,9 +73,12 @@ function ProductScreen(props) {
                   </select>
                 </li>
                 <li>
+                  {
+                  product.countInStock > 0 &&
                   <button className='button'
                   onClick = {handleAddToCart}
                   >Add to cart</button>
+                  }
                 </li>
               </ul>
             </div>

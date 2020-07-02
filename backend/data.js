@@ -9,7 +9,7 @@ export default  {
       brand: 'mRocker Designer Toys',
       rating: 4.5,
       numReviews: 5,
-      countInStock: 6,
+      countInStock: 3,
     },
     {
       _id:'2',
