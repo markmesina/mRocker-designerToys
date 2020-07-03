@@ -1,3 +1,6 @@
 export default {
-    MONGODB_URL: process.env.MONGODB_URL || 'mongodb://localhost/mrocker-designertoys'
+    MONGODB_URL: process.env.MONGODB_URL || 'mongodb://localhost/mrocker-designertoys',
+    JWT_SECRET = process.env.JWT_SECRET || 'agbadgergebabdfabkjNVS;ldvmalfdpopav',
+
+
 }
