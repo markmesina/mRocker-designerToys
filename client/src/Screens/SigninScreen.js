@@ -29,7 +29,7 @@ function SigninScreen(props) {
     <form onSubmit={submitHandler}>
       <ul className='form-container'>
         <li>
-          <h3> Sign In</h3>
+          <h2> Sign In</h2>
         </li>
         <li>
           <label for='email'>
@@ -54,7 +54,7 @@ function SigninScreen(props) {
           No account yet?
         </li>
         <li>
-          <Link to='/register' className='button full-width'>Create an account</Link>
+          <Link to='/register' className='button secondary text-center'>Create an account</Link>
         </li>
       </ul>
     </form>
