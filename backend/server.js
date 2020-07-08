@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
+import bodyParser from 'body-parser';
 
 import data from './data';
 import config from './config';
@@ -18,7 +19,7 @@ mongoose.connect(mongodbUrl, {
 const app = express();
 const PORT = 5000 || process.env.PORT;
 
-
+app.use(bodyParser.json());
 app.use('/api/users', userRoute);
 
 app.get('/api/products', (req, res) => {

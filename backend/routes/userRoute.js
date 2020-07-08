@@ -1,12 +1,13 @@
 import express from 'express';
 import User from '../Model/userModel';
+import { getToken } from '../util';
 
 const router = express.Router();
 
-router.post('/signing', async (req, res) => {
+router.post('/signin', async (req, res) => {
 
     const signinUser = await User.findOne({
-        email: re.body.email,
+        email: req.body.email,
         password: req.body.password,
     });
     if(signinUser) {
@@ -15,7 +16,7 @@ router.post('/signing', async (req, res) => {
             name: signinUser.name,
             email: signinUser.email,
             isAdmin: signinUser.isAdmin,
-            token: getToken(user)
+            token: getToken(signinUser)
         })
     } else {
         res.status(401).send({ msg: 'Invalid email or password'})

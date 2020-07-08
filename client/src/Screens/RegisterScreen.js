@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { signin } from '../actions/userActions';
+import { register } from '../actions/userActions';
 
 
-function SigninScreen(props) {
+function RegisterScreen(props) {
 
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const userSignin = useSelector(state=> state.userSignin);
-  const { loading, userInfo, error } = userSignin;
+  const [rePassword, setRePassword] = useState('');
+  const userRegister = useSelector(state=> state.userRegister);
+  const { loading, userInfo, error } = userRegister;
 
   const dispatch = useDispatch();
 
@@ -26,7 +28,7 @@ function SigninScreen(props) {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(signin(email, password));
+    dispatch(register(email, password));
 
   }
 
@@ -35,11 +37,19 @@ function SigninScreen(props) {
     <form onSubmit={submitHandler}>
       <ul className='form-container'>
         <li>
-          <h2> Sign In</h2>
+          <h2>Create Account</h2>
         </li>
         <li>
           {loading && <div>Loading...</div>}
           {error && <div>{error}</div>}
+        </li>
+        <li>
+          <label htmlFor='name'>
+            Name: 
+          </label>
+          <input type='name' name='name' 
+          id='name' onChange={(e) => setName(e.target.value)}>
+          </input>
         </li>
         <li>
           <label htmlFor='email'>
@@ -58,13 +68,18 @@ function SigninScreen(props) {
             </input>
         </li>
         <li>
-          <button type='submit' className='button primary'>Sign In</button>
+          <label htmlFor='rePassword'>
+            Re-Enter Password: 
+          </label>
+            <input type='rePassword' name='rePassword'
+            id='rePassword' onChange={(e) => setRePassword(e.target.value)}>
+            </input>
         </li>
         <li>
-          No account yet?
+          <button type='submit' className='button primary'>Register</button>
         </li>
         <li>
-          <Link to='/register' className='button secondary text-center'>Create an account</Link>
+          Already have an account? <Link to='/signin'>Sign In</Link>
         </li>
       </ul>
     </form>
@@ -72,4 +87,4 @@ function SigninScreen(props) {
   </div>
 }
 
-export default SigninScreen;
+export default RegisterScreen;
