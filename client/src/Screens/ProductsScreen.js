@@ -15,7 +15,7 @@ function ProductsScreen(props) {
   const [description, setDescription] = useState('');
   const [rating, setRating] = useState('');
   const [numReviews, setNumReviews] = useState('');
-  
+
   const productSave = useSelector(state=> state.productSave);
   const { loading: loadingSave, success: successSave, error: errorSave } = productSave;
 
@@ -32,7 +32,16 @@ function ProductsScreen(props) {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(saveProduct({name, price}));
+    dispatch(saveProduct({name,
+         price, 
+         image,
+         brand,
+         category,
+         rating,
+         countInStock,
+         numReviews,
+         description
+        }));
 
   }
 
@@ -54,6 +63,70 @@ function ProductsScreen(props) {
           <input type='text' name='name' 
           id='name' onChange={(e) => setName(e.target.value)}>
           </input>
+        </li>
+        <li>
+          <label htmlFor='price'>
+            Price: 
+          </label>
+          <input type='text' name='price' 
+          id='price' onChange={(e) => setPrice(e.target.value)}>
+          </input>
+        </li>
+        <li>
+          <label htmlFor='image'>
+            Image: 
+          </label>
+          <input type='text' name='image' 
+          id='image' onChange={(e) => setImage(e.target.value)}>
+          </input>
+        </li>
+        <li>
+          <label htmlFor='brand'>
+            Brand: 
+          </label>
+          <input type='text' name='brand' 
+          id='brand' onChange={(e) => setBrand(e.target.value)}>
+          </input>
+        </li>
+        <li>
+          <label htmlFor='category'>
+            Category: 
+          </label>
+          <input type='text' name='category' 
+          id='category' onChange={(e) => setCategory(e.target.value)}>
+          </input>
+        </li>
+        <li>
+          <label htmlFor='countInStock'>
+            Count In Stock: 
+          </label>
+          <input type='text' name='countInStock' 
+          id='countInStock' onChange={(e) => setCountInStock(e.target.value)}>
+          </input>
+        </li>
+        <li>
+          <label htmlFor='rating'>
+            Rating: 
+          </label>
+          <input type='text' name='rating' 
+          id='rating' onChange={(e) => setRating(e.target.value)}>
+          </input>
+        </li>
+        <li>
+          <label htmlFor='numReviews'>
+            Num Reviews: 
+          </label>
+          <input type='text' name='numReviews' 
+          id='numReviews' onChange={(e) => setNumReviews(e.target.value)}>
+          </input>
+        </li>
+        <li>
+          <label htmlFor='description'>
+            Description: 
+          </label>
+          <textarea name='description' 
+          id='description' onChange={(e) => setDescription(e.target.value)}>
+          </textarea>
         </li>
         <li>
           <button type='submit' className='button primary'>Post</button>
