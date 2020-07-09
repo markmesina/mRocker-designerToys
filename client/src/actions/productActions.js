@@ -16,6 +16,15 @@ const listProduct = () => async (dispatch) => {
   }
 }
 
+const saveProduct = () => async (dispatch) => {
+  try {
+    
+  } catch (e) {
+    
+  }
+
+}
+
 const detailsProduct = (productId) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_DETAILS_REQUEST, payload: productId });
