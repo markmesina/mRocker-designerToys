@@ -10,9 +10,9 @@ const listProduct = () => async (dispatch) => {
 
     dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
 
-  } catch (e) {
+  } catch (error) {
 
-    dispatch({ type: PRODUCT_LIST_ERROR, payload: e.message })
+    dispatch({ type: PRODUCT_LIST_ERROR, payload: error.message })
   }
 }
 
@@ -25,7 +25,7 @@ const saveProduct = (product) => async (dispatch, getState) => {
       { headers: { 'Authorization': 'Bearer' + userInfo.token } },
     );
     dispatch({ type: PRODUCT_SAVE_SUCCESS, payload: data });
-  } catch (e) {
+  } catch (error) {
     dispatch({ type: PRODUCT_SAVE_ERROR, payload: error.message });
   }
 
@@ -37,8 +37,8 @@ const detailsProduct = (productId) => async (dispatch) => {
     const { data } = await axios.get('/api/products/' + productId);
     dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data });
 
-  } catch (e) {
-    dispatch({ type: PRODUCT_DETAILS_ERROR, payload: e.message })
+  } catch (error) {
+    dispatch({ type: PRODUCT_DETAILS_ERROR, payload: error.message })
   }
 }
 

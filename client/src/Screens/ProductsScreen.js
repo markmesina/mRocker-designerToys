@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { signin } from '../actions/userActions';
+import { saveProduct } from '../actions/productActions';
 
 
 function ProductsScreen(props) {
@@ -17,7 +16,12 @@ function ProductsScreen(props) {
   const [numReviews, setNumReviews] = useState('');
 
   const productSave = useSelector(state=> state.productSave);
-  const { loading: loadingSave, success: successSave, error: errorSave } = productSave;
+
+  const { 
+      loading: loadingSave, 
+      success: successSave, 
+      error: errorSave, 
+    } = productSave;
 
   const dispatch = useDispatch();
 
@@ -27,12 +31,13 @@ function ProductsScreen(props) {
       //
     };
 
-  }, [userInfo]);
+  }, []);
 
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(saveProduct({name,
+    dispatch(saveProduct({
+         name,
          price, 
          image,
          brand,
@@ -53,8 +58,8 @@ function ProductsScreen(props) {
           <h2>Post Product</h2>
         </li>
         <li>
-          {loading && <div>Loading...</div>}
-          {error && <div>{error}</div>}
+          {loadingSave && <div>Loading...</div>}
+          {errorSave && <div>{errorSave}</div>}
         </li>
         <li>
           <label htmlFor='name'>
@@ -138,4 +143,4 @@ function ProductsScreen(props) {
   </div>
 }
 
-export default SigninScreen;
+export default ProductsScreen;
