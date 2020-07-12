@@ -47,8 +47,6 @@ function ProductsScreen(props) {
     setBrand(product.brand);
     setCategory(product.category);
     setCountInStock(product.countInStock);
-    setRating(product.rating);
-    setNumReviews(product.numReviews);
   }
 
   const submitHandler = (e) => {
@@ -141,6 +139,9 @@ function ProductsScreen(props) {
           </li>
           <li>
             <button type='submit' className='button primary'>Post</button>
+          </li>
+          <li>
+            <button type='button' onClick={() => setModalVisible(false)} className='button secondary'>Back</button>
           </li>
         </ul>
       </form>
