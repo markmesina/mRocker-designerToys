@@ -31,12 +31,15 @@ function ProductsScreen(props) {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    if (successSave) {
+      setModalVisible(false);
+    }
     dispatch(listProduct());
     return () => {
       //
     };
 
-  }, []);
+  }, [successSave]);
 
   const openModal = (product) => {
     setModalVisible(true);
@@ -52,6 +55,7 @@ function ProductsScreen(props) {
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(saveProduct({
+      _id: id,
       name,
       price,
       image,
@@ -65,7 +69,7 @@ function ProductsScreen(props) {
 
 
   return <div className='content content-margined'>
-    <div classname='product-header'>
+    <div className='product-header'>
       <h3>Products</h3>
       <button onClick={() => openModal({})}>Create Product</button>
     </div>
@@ -85,7 +89,7 @@ function ProductsScreen(props) {
             <label htmlFor='name'>
               Name:
           </label>
-            <input type='text' name='name'
+            <input type='text' name='name' value={name}
               id='name' onChange={(e) => setName(e.target.value)}>
             </input>
           </li>
@@ -93,7 +97,7 @@ function ProductsScreen(props) {
             <label htmlFor='price'>
               Price:
           </label>
-            <input type='text' name='price'
+            <input type='text' name='price' value={price}
               id='price' onChange={(e) => setPrice(e.target.value)}>
             </input>
           </li>
@@ -101,7 +105,7 @@ function ProductsScreen(props) {
             <label htmlFor='image'>
               Image:
           </label>
-            <input type='text' name='image'
+            <input type='text' name='image' value={image}
               id='image' onChange={(e) => setImage(e.target.value)}>
             </input>
           </li>
@@ -109,7 +113,7 @@ function ProductsScreen(props) {
             <label htmlFor='brand'>
               Brand:
           </label>
-            <input type='text' name='brand'
+            <input type='text' name='brand' value={brand}
               id='brand' onChange={(e) => setBrand(e.target.value)}>
             </input>
           </li>
@@ -117,7 +121,7 @@ function ProductsScreen(props) {
             <label htmlFor='category'>
               Category:
           </label>
-            <input type='text' name='category'
+            <input type='text' name='category' value={category}
               id='category' onChange={(e) => setCategory(e.target.value)}>
             </input>
           </li>
@@ -125,7 +129,7 @@ function ProductsScreen(props) {
             <label htmlFor='countInStock'>
               Count In Stock:
           </label>
-            <input type='text' name='countInStock'
+            <input type='text' name='countInStock' value={countInStock}
               id='countInStock' onChange={(e) => setCountInStock(e.target.value)}>
             </input>
           </li>
@@ -133,12 +137,12 @@ function ProductsScreen(props) {
             <label htmlFor='description'>
               Description:
           </label>
-            <textarea name='description'
+            <textarea name='description' value={description}
               id='description' onChange={(e) => setDescription(e.target.value)}>
             </textarea>
           </li>
           <li>
-            <button type='submit' className='button primary'>Post</button>
+            <button type='submit' className='button primary'>{id ? 'Update' : 'Create'}</button>
           </li>
           <li>
             <button type='button' onClick={() => setModalVisible(false)} className='button secondary'>Back</button>
@@ -160,13 +164,13 @@ function ProductsScreen(props) {
           </tr>
         </thead>
         <tbody>
-          {products.map(product => (
-            <tr>
-              <td>{productList._id}</td>
-              <td>{productList.name}</td>
-              <td>{productList._price}</td>
-              <td>{productList.category}</td>
-              <td>{productList.brand}</td>
+          {products.map( (product) => (
+            <tr key={product._id}>
+              <td>{product._id}</td>
+              <td>{product.name}</td>
+              <td>{product.price}</td>
+              <td>{product.category}</td>
+              <td>{product.brand}</td>
               <td>
                 <button onClick={() => openModal(product)}>Edit</button>
                 <button>Delete</button>
