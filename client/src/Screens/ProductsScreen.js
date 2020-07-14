@@ -84,7 +84,7 @@ function ProductsScreen(props) {
   return <div className='content content-margined'>
     <div className='product-header'>
       <h3>Products</h3>
-      <button onClick={() => openModal({})}>Create Product</button>
+      <button className='button primary' onClick={() => openModal({})}>Create Product</button>
     </div>
 
     {modalVisible && 
@@ -165,7 +165,7 @@ function ProductsScreen(props) {
     </div>
     }
     <div className='product-list'>
-      <table>
+      <table className='table'>
         <thead>
           <tr>
             <th>ID</th>
@@ -185,8 +185,9 @@ function ProductsScreen(props) {
               <td>{product.category}</td>
               <td>{product.brand}</td>
               <td>
-                <button onClick={() => openModal(product)}>Edit</button>
-                <button onClick={() => deleteHandler(product)}>Delete</button>
+                <button className= 'button' onClick={() => openModal(product)}>Edit</button>
+                {' '}
+                <button className= 'button' onClick={() => deleteHandler(product)}>Delete</button>
               </td>
             </tr>
           ))}
