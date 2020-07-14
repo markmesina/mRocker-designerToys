@@ -63,9 +63,9 @@ function ProductsScreen(props) {
       category,
       countInStock,
       description
-    }));
-
-  }
+    })
+    );
+  };
 
 
   return <div className='content content-margined'>
