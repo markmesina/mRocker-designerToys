@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { saveProduct, listProduct } from '../actions/productActions';
+import { saveProduct, listProduct, deleteProduct } from '../actions/productActions';
 
 
 function ProductsScreen(props) {
@@ -19,6 +19,14 @@ function ProductsScreen(props) {
     products,
     error,
   } = productList;
+  
+  const productDelete = useSelector(state => state.productDelete);
+
+  const {
+    loading: loadingDelete,
+    success: successDelete,
+    error: errorDelete,
+  } = productDelete;
 
   const productSave = useSelector(state => state.productSave);
 
@@ -39,7 +47,7 @@ function ProductsScreen(props) {
       //
     };
 
-  }, [successSave]);
+  }, [successSave, successDelete]);
 
   const openModal = (product) => {
     setModalVisible(true);
@@ -66,6 +74,11 @@ function ProductsScreen(props) {
     })
     );
   };
+  const deleteHandler = (product) => {
+    dispatch(deleteProduct(product._id));
+  };
+
+
 
 
   return <div className='content content-margined'>
@@ -173,7 +186,7 @@ function ProductsScreen(props) {
               <td>{product.brand}</td>
               <td>
                 <button onClick={() => openModal(product)}>Edit</button>
-                <button>Delete</button>
+                <button onClick={() => deleteHandler(product)}>Delete</button>
               </td>
             </tr>
           ))}
