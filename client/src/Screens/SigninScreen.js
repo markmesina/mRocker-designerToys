@@ -8,14 +8,15 @@ function SigninScreen(props) {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const userSignin = useSelector(state=> state.userSignin);
+  const userSignin = useSelector(state => state.userSignin);
   const { loading, userInfo, error } = userSignin;
 
   const dispatch = useDispatch();
+  const redirect = props.location.search ? props.location.search.split('=')[1] : '/';
 
   useEffect(() => {
-    if(userInfo) {
-      props.history.push('/');
+    if (userInfo) {
+      props.history.push(redirect);
     }
     return () => {
       //
@@ -43,19 +44,19 @@ function SigninScreen(props) {
         </li>
         <li>
           <label htmlFor='email'>
-            Email: 
+            Email:
           </label>
-          <input type='email' name='email' 
-          id='email' onChange={(e) => setEmail(e.target.value)}>
+          <input type='email' name='email'
+            id='email' onChange={(e) => setEmail(e.target.value)}>
           </input>
         </li>
         <li>
           <label htmlFor='password'>
-            Password: 
+            Password:
           </label>
-            <input type='password' name='password'
+          <input type='password' name='password'
             id='password' onChange={(e) => setPassword(e.target.value)}>
-            </input>
+          </input>
         </li>
         <li>
           <button type='submit' className='button primary'>Sign In</button>
@@ -64,7 +65,7 @@ function SigninScreen(props) {
           No account yet?
         </li>
         <li>
-          <Link to='/register' className='button secondary text-center'>Create an account</Link>
+          <Link to={redirect === '/' ? 'register' : 'register?redirect=' + redirect} className='button secondary text-center'>Create an account</Link>
         </li>
       </ul>
     </form>
