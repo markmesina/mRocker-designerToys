@@ -16,60 +16,60 @@ function ShippingScreen(props) {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(saveShipping(address, city, postalCode, country));
+    dispatch(saveShipping({ address, city, postalCode, country }));
     props.history.push('/payment');
   }
 
 
   return <div>
-  <CheckoutSteps step1 step2></CheckoutSteps>
-  <div className='form'>
-    <form onSubmit={submitHandler}>
-      <ul className='form-container'>
-        <li>
-          <h2>Shipping</h2>
-        </li>
-        <li>
-          <label htmlFor='address'>
-            Address: 
+    <CheckoutSteps step1 step2></CheckoutSteps>
+    <div className='form'>
+      <form onSubmit={submitHandler}>
+        <ul className='form-container'>
+          <li>
+            <h2>Shipping</h2>
+          </li>
+          <li>
+            <label htmlFor='address'>
+              Address:
           </label>
-          <input type='address' name='address' 
-          id='address' onChange={(e) => setAddress(e.target.value)}>
-          </input>
-        </li>
-        <li>
-          <label htmlFor='city'>
-            City: 
+            <input type='address' name='address'
+              id='address' onChange={(e) => setAddress(e.target.value)}>
+            </input>
+          </li>
+          <li>
+            <label htmlFor='city'>
+              City:
           </label>
-          <input type='city' name='city' 
-          id='city' onChange={(e) => setCity(e.target.value)}>
-          </input>
-        </li>
-        <li>
-          <label htmlFor='postalCode'>
-            Postal Code: 
+            <input type='city' name='city'
+              id='city' onChange={(e) => setCity(e.target.value)}>
+            </input>
+          </li>
+          <li>
+            <label htmlFor='postalCode'>
+              Postal Code:
           </label>
-          <input type='postalCode' name='postalCode' 
-          id='postalCode' onChange={(e) => setPostalCode(e.target.value)}>
-          </input>
-        </li>
-        <li>
-          <label htmlFor='Country'>
-            Country: 
+            <input type='postalCode' name='postalCode'
+              id='postalCode' onChange={(e) => setPostalCode(e.target.value)}>
+            </input>
+          </li>
+          <li>
+            <label htmlFor='Country'>
+              Country:
           </label>
-          <input type='Country' name='Country' 
-          id='Country' onChange={(e) => setCountry(e.target.value)}>
-          </input>
-        </li>
-        <li>
-          <button type='submit' className='button primary'>Continue</button>
-        </li>
-      </ul>
-    </form>
+            <input type='Country' name='Country'
+              id='Country' onChange={(e) => setCountry(e.target.value)}>
+            </input>
+          </li>
+          <li>
+            <button type='submit' className='button primary'>Continue</button>
+          </li>
+        </ul>
+      </form>
 
+    </div>
   </div>
-  </div>
-  
+
 }
 
 export default ShippingScreen;
